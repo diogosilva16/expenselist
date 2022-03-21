@@ -37,16 +37,16 @@ function ExpenseForm(props) {
     event.preventDefault();
 
     const expenseData = {
-        title: enteredTitle,
-        amount: enteredAmount,
-        date: new Date(enteredDate)
-    }
+      title: enteredTitle,
+      amount: +enteredAmount,
+      date: new Date(enteredDate),
+    };
 
     props.onSaveExpenseData(expenseData);
 
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
@@ -54,7 +54,11 @@ function ExpenseForm(props) {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -78,6 +82,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={props.onCancel} type="button">Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
